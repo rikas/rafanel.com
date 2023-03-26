@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       title: ['Montserrat', 'sans-serif'],
-      body: ['Montserrat', 'sans-serif'],
+      body: ['Noto Serif', 'serif'],
     },
     extend: {
       colors: {
@@ -12,5 +12,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
