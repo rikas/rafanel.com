@@ -96,7 +96,7 @@ const FormDialog = ({ isOpen, onClose }) => {
           document.body,
         )}
 
-        <div className="fixed inset-0 flex items-center justify-center p-0">
+        <div className="fixed inset-0 flex items-center justify-center p-0 overflow-y-auto">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
