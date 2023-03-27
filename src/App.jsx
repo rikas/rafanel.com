@@ -20,7 +20,7 @@ const App = () => {
         <div className="mt-5 md:mt-8">
           <Paragraph>Junto com os seus pais,</Paragraph>
           <Paragraph>Graça Correia e Valdemar Barreiros,</Paragraph>
-          <Paragraph>Isabel Rodrigues e José Álvaro Rodrigues Santos,</Paragraph>
+          <Paragraph>Isabel Rodrigues e José Álvaro Rodrigues Santos</Paragraph>
           <Paragraph>e com o filho Francisco,</Paragraph>
         </div>
 
