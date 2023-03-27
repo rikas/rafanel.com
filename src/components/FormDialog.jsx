@@ -12,7 +12,7 @@ import ChildrenSelect from './form/ChildrenSelect';
 const FormDialog = ({ isOpen, onClose }) => {
   const [formState, setFormState] = useState({
     email: '',
-    adults: [{ id: uuid(), name: '', alergies: [] }],
+    adults: [{ id: uuid(), name: '', allergies: [] }],
     children: [],
     comments: '',
   });
@@ -35,7 +35,7 @@ const FormDialog = ({ isOpen, onClose }) => {
   };
 
   const addAdult = () => {
-    setFormState({ ...formState, adults: [...adults, { id: uuid(), name: '', alergies: [] }] });
+    setFormState({ ...formState, adults: [...adults, { id: uuid(), name: '', allergies: [] }] });
   };
 
   const removeAdult = () => {

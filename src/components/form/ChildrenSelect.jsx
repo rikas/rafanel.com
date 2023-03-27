@@ -1,6 +1,7 @@
 import FormField from './FormField';
 import AlergiesSelect from './AlergiesSelect';
 import FieldList from './FieldList';
+import Stack from '../Stack';
 
 const ChildrenSelect = ({ entries, add, remove, update }) => {
   return (
@@ -36,17 +37,31 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-5">
-            <div className="flex items-center gap-2">
-              <input type="radio" id={`opt1-${id}`} name={`cerimonia-festa-${id}`} />
-              <label htmlFor={`opt1-${id}`}>Vai apenas à cerimónia</label>
-            </div>
+          <Stack direction="row" gap={5}>
+            <Stack direction="row" itemsCenter>
+              <input
+                type="radio"
+                id={`opt1-${id}`}
+                name={`cerimonia-festa-${id}`}
+                className="cursor-pointer"
+              />
+              <label htmlFor={`opt1-${id}`} className="cursor-pointer pl-2">
+                Apenas cerimónia
+              </label>
+            </Stack>
 
-            <div className="flex items-center gap-2">
-              <input type="radio" id={`opt2-${id}`} name={`cerimonia-festa-${id}`} />
-              <label htmlFor={`opt2-${id}`}>Vai à cerimónia e à festa</label>
-            </div>
-          </div>
+            <Stack direction="row" itemsCenter>
+              <input
+                type="radio"
+                id={`opt2-${id}`}
+                name={`cerimonia-festa-${id}`}
+                className="cursor-pointer"
+              />
+              <label htmlFor={`opt2-${id}`} className="cursor-pointer pl-2">
+                Cerimónia e festa
+              </label>
+            </Stack>
+          </Stack>
         </>
       ))}
     </FieldList>

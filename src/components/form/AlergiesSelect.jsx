@@ -4,7 +4,7 @@ import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 
 import FormSelect from './FormSelect';
 
-const possibleAlergies = [
+const possibleAllergies = [
   { id: 'vegetariano', name: 'Vegetariano' },
   { id: 'vegan', name: 'Vegan' },
   { id: 'celiaco', name: 'Doença celíaca' },
@@ -12,19 +12,19 @@ const possibleAlergies = [
   { id: 'marisco', name: 'Alergia a marisco' },
 ];
 
-const AlergiesSelect = ({ alergies, setAlergies }) => {
+const AlergiesSelect = ({ allergies, setAllergies }) => {
   return (
-    <Listbox value={alergies} onChange={setAlergies} name="alergias" multiple>
+    <Listbox value={allergies} onChange={setAllergies} name="alergias" multiple>
       <div className="relative w-full">
         <Listbox.Button className="border w-full border-gray-500 py-2 pl-3 pr-10 text-left sm:text-sm">
           <span className="text-base w-full flex justify-between align-bottom">
-            {alergies.length === 0 ? (
+            {allergies.length === 0 ? (
               <span className="text-gray-500 whitespace-nowrap truncate">
                 Restrições alimentares
               </span>
             ) : (
               <span className="whitespace-nowrap truncate overflow-hidden">
-                {alergies.map((alergy) => alergy.name).join(', ')}
+                {allergies.map((alergy) => alergy.name).join(', ')}
               </span>
             )}
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -34,7 +34,7 @@ const AlergiesSelect = ({ alergies, setAlergies }) => {
         </Listbox.Button>
 
         <Listbox.Options className="absolute z-50 mt-1 max-h-64 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          {possibleAlergies.map((alergy) => (
+          {possibleAllergies.map((alergy) => (
             <Listbox.Option
               key={alergy.id}
               value={alergy}
