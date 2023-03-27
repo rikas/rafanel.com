@@ -1,6 +1,7 @@
 import { PlusSmallIcon, MinusSmallIcon } from '@heroicons/react/24/solid';
 import IconButton from './IconButton';
 import Title from '../Title';
+import Stack from '../Stack';
 
 const FieldList = ({ title, count, add, remove, children }) => {
   return (
@@ -20,7 +21,10 @@ const FieldList = ({ title, count, add, remove, children }) => {
           <PlusSmallIcon className="h-6 w-6" />
         </IconButton>
       </div>
-      <div className="flex flex-col gap-5">{children}</div>
+
+      <Stack direction="column" gap={5}>
+        {children}
+      </Stack>
     </>
   );
 };

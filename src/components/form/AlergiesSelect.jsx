@@ -44,13 +44,13 @@ const AlergiesSelect = ({ alergies, setAlergies }) => {
                 <div
                   className={`px-2 py-2 sm:py-3 ${
                     selected ? 'bg-slate-100 hover:bg-slate-200' : ''
-                  } ${active ? 'bg-slate-200' : 'bg-white text-black'}`}
+                  } ${active ? 'bg-slate-200' : 'bg-white'}`}
                 >
                   <div className="flex gap-3 items-center">
                     <CheckIcon
-                      className={`h-5 w-5 border border-slate-400 ${
-                        selected ? 'bg-slate-400' : ''
-                      } ${active ? 'border-slate-100' : ''} text-white bg-white rounded`}
+                      className={`h-5 w-5 border text-white rounded ${
+                        selected ? 'bg-slate-400' : 'bg-white'
+                      } ${active ? 'border-slate-500' : 'border-slate-400'}`}
                     />
                     {alergy.name}
                   </div>

@@ -88,7 +88,7 @@ const FormDialog = ({ isOpen, onClose }) => {
         </Transition.Child>
 
         {createPortal(
-          <div className="hidden absolute text-xs bg-black text-lime-200 p-3 rounded m-2 top-0 left-0">
+          <div className="absolute text-xs bg-black text-lime-200 p-3 rounded m-2 top-0 left-0">
             <pre>
               <code>{JSON.stringify(formState, null, 2)}</code>
             </pre>
@@ -96,7 +96,7 @@ const FormDialog = ({ isOpen, onClose }) => {
           document.body,
         )}
 
-        <div className="fixed inset-0 flex items-center justify-center p-0 overflow-y-auto">
+        <div className="fixed inset-0 flex items-center justify-center p-0">
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
