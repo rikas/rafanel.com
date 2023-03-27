@@ -88,7 +88,7 @@ const FormDialog = ({ isOpen, onClose }) => {
         </Transition.Child>
 
         {createPortal(
-          <div className="absolute text-xs bg-black text-lime-200 p-3 rounded m-2 top-0 left-0">
+          <div className="absolute hidden text-xs bg-black text-lime-200 p-3 rounded m-2 top-0 left-0">
             <pre>
               <code>{JSON.stringify(formState, null, 2)}</code>
             </pre>
