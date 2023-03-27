@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import FormField from './FormField';
 import AlergiesSelect from './AlergiesSelect';
 import FieldList from './FieldList';
@@ -7,8 +9,8 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
   return (
     <FieldList count={entries.length} add={add} remove={remove} title="Crianças">
       {entries.map(({ id, name, age }, index) => (
-        <>
-          <div key={id} className="flex items-end gap-3">
+        <Fragment key={id}>
+          <div className="flex items-end gap-3">
             <div className="grow w-1/2">
               <FormField
                 type="text"
@@ -58,11 +60,11 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                 className="cursor-pointer"
               />
               <label htmlFor={`opt2-${id}`} className="cursor-pointer pl-2">
-                Cerimónia e festa
+                Jantar e festa
               </label>
             </Stack>
           </Stack>
-        </>
+        </Fragment>
       ))}
     </FieldList>
   );

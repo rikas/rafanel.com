@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-const Button = ({ type, children, variant = 'solid', ...props }) => {
+const Button = ({ type, children, variant = 'solid', disabled, ...props }) => {
   const classes = clsx(
     'text-white',
     'text-base',
@@ -19,6 +19,11 @@ const Button = ({ type, children, variant = 'solid', ...props }) => {
     'font-title',
     'border',
     'border-zinc-900',
+    'disabled:cursor-not-allowed',
+    'disabled:bg-zinc-700',
+    'disabled:text-zinc-400',
+    'disabled:border-zinc-700',
+    'disabled:hover:bg-zinc-700',
     {
       'bg-zinc-900': variant === 'solid',
     },
@@ -29,7 +34,7 @@ const Button = ({ type, children, variant = 'solid', ...props }) => {
   );
 
   return (
-    <button type={type} className={classes} {...props}>
+    <button type={type} className={classes} disabled={disabled} {...props}>
       {children}
     </button>
   );

@@ -19,19 +19,20 @@ const App = () => {
 
         <div className="mt-5 md:mt-8">
           <Paragraph>Junto com os seus pais,</Paragraph>
-          <Paragraph>Isabel Rodrigues dos Santos e José Álvaro Rodrigues dos Santos,</Paragraph>
           <Paragraph>Graça Correia e Valdemar Barreiros,</Paragraph>
+          <Paragraph>Isabel Rodrigues e José Álvaro Rodrigues Santos,</Paragraph>
         </div>
 
         <div>
-          <Title>Maria Manuel &</Title>
-          <Title>Rafael</Title>
+          <Title>Maria Manuel</Title>
+          <Title>& Rafael</Title>
         </div>
 
         <div>
           <Paragraph>convidam para a celebração do seu casamento,</Paragraph>
           <Paragraph>no Convento de Sandelgas,</Paragraph>
-          <Paragraph>Rua do Convento, nº 8, Sandelgas, 3025-474 Coimbra,</Paragraph>
+          <Paragraph>Rua do Convento, nº 8, Sandelgas,</Paragraph>
+          <Paragraph>3025-474 Coimbra,</Paragraph>
           <Paragraph>pelas 15h30, de 5ª feira, dia 5 de outubro de 2023.</Paragraph>
         </div>
 

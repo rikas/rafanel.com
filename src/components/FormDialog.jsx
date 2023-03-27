@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { createPortal } from 'react-dom';
 import { v4 as uuid } from 'uuid';
+import { BeatLoader } from 'react-spinners';
 
 import Button from './Button';
 import Title from './Title';
@@ -9,8 +10,10 @@ import FormField from './form/FormField';
 import AdultsSelect from './form/AdultsSelect';
 import ChildrenSelect from './form/ChildrenSelect';
 import Stack from './Stack';
+import rsvpSender from '../rsvpSender';
 
 const FormDialog = ({ isOpen, onClose }) => {
+  const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({
     email: '',
     adults: [{ id: uuid(), name: '', allergies: [] }],
@@ -22,6 +25,11 @@ const FormDialog = ({ isOpen, onClose }) => {
   const comments = formState.comments;
   const adults = formState.adults;
   const children = formState.children;
+  const valid =
+    email &&
+    adults.length > 0 &&
+    adults.every((adult) => adult.name) &&
+    children.every((child) => child.name && child.age);
 
   const onEmailChange = (event) => {
     const { value } = event.target;
@@ -73,6 +81,24 @@ const FormDialog = ({ isOpen, onClose }) => {
     setFormState({ ...formState, children: newChildren });
   };
 
+  const submitForm = (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    // rsvpSender({
+    //   params: formState,
+    //   onSuccess: () => {
+    //     console.log('Foi sucesso');
+    //     setLoading(false);
+    //     onClose();
+    //   },
+    //   onError: () => {
+    //     setLoading(false);
+    //     console.log('Foi erro');
+    //   },
+    // });
+  };
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" onClose={onClose} className="relative z-50">
@@ -107,11 +133,13 @@ const FormDialog = ({ isOpen, onClose }) => {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="fixed w-full max-w-xl bg-white max-h-full overflow-y-auto">
-              <form onSubmit={() => alert('SUBMIT')}>
+              <form onSubmit={submitForm}>
                 <div className="flex flex-col px-4 py-3 sm:px-6 sm:py-8">
                   <Stack gap={4}>
                     <Dialog.Title as={Title}>RSVP</Dialog.Title>
-                    <Dialog.Description>Paleio para introdução disto?</Dialog.Description>
+                    <Dialog.Description className="pt-2 pb-3">
+                      Quem vem prá festa?
+                    </Dialog.Description>
                     <FormField
                       name="email"
                       id="email"
@@ -119,6 +147,8 @@ const FormDialog = ({ isOpen, onClose }) => {
                       label="Email"
                       value={email}
                       onChange={onEmailChange}
+                      disabled={loading}
+                      required
                       autoFocus
                     />
 
@@ -136,7 +166,7 @@ const FormDialog = ({ isOpen, onClose }) => {
                       update={updateChild}
                     />
 
-                    <div className="mt-5">
+                    <div className="mt-8">
                       <FormField
                         name="comments"
                         id="comments"
@@ -144,18 +174,22 @@ const FormDialog = ({ isOpen, onClose }) => {
                         value={comments}
                         onChange={onCommentsChange}
                         label="Comentários adicionais ou palavras especiais aos noivos?"
+                        disabled={loading}
                       />
                     </div>
                   </Stack>
                 </div>
 
-                <div className="flex bg-gray-100 px-4 py-5 sm:px-6 sm:py-8 mt-8 justify-between">
+                <div className="flex bg-gray-100 px-4 py-5 sm:px-6 sm:py-8 mt-5 justify-between">
                   <Button type="button" onClick={onClose} variant="outline">
                     Cancelar
                   </Button>
 
-                  <Button type="submit" onClick={onClose}>
-                    Enviar
+                  <Button type="submit" onClick={submitForm} disabled={loading || !valid}>
+                    <Stack direction="row" gap={2} itemsCenter>
+                      <span>{loading ? 'Enviando' : 'Enviar'}</span>
+                      {loading && <BeatLoader color="#ffffff" size={3} />}
+                    </Stack>
                   </Button>
                 </div>
               </form>

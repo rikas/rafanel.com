@@ -15,7 +15,7 @@ const FieldList = ({ title, count, add, remove, min = 0, children }) => {
           <MinusSmallIcon className="h-6 w-6" />
         </IconButton>
 
-        <span className="text-xl text-slate-600 px-2">{count}</span>
+        <span className="text-xl text-slate-600 px-2 select-none">{count}</span>
 
         <IconButton onClick={add} disabled={count === 5}>
           <PlusSmallIcon className="h-6 w-6" />
