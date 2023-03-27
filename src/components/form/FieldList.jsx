@@ -3,7 +3,7 @@ import IconButton from './IconButton';
 import Title from '../Title';
 import Stack from '../Stack';
 
-const FieldList = ({ title, count, add, remove, children }) => {
+const FieldList = ({ title, count, add, remove, min = 0, children }) => {
   return (
     <>
       <div className="flex items-center gap-3 mt-8 mb-4">
@@ -11,7 +11,7 @@ const FieldList = ({ title, count, add, remove, children }) => {
           {title}
         </Title>
 
-        <IconButton onClick={remove} disabled={count === 0}>
+        <IconButton onClick={remove} disabled={count === min}>
           <MinusSmallIcon className="h-6 w-6" />
         </IconButton>
 
@@ -22,9 +22,7 @@ const FieldList = ({ title, count, add, remove, children }) => {
         </IconButton>
       </div>
 
-      <Stack direction="column" gap={5}>
-        {children}
-      </Stack>
+      <Stack gap={5}>{children}</Stack>
     </>
   );
 };

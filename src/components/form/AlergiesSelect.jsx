@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Listbox } from '@headlessui/react';
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import FormSelect from './FormSelect';
 
@@ -48,7 +48,7 @@ const AlergiesSelect = ({ allergies, setAllergies }) => {
                 >
                   <div className="flex gap-3 items-center">
                     <CheckIcon
-                      className={`h-5 w-5 border text-white rounded ${
+                      className={`h-4 w-4 flex-shrink-0 border text-white rounded ${
                         selected ? 'bg-slate-400' : 'bg-white'
                       } ${active ? 'border-slate-500' : 'border-slate-400'}`}
                     />

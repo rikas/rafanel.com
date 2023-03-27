@@ -8,6 +8,7 @@ import Title from './Title';
 import FormField from './form/FormField';
 import AdultsSelect from './form/AdultsSelect';
 import ChildrenSelect from './form/ChildrenSelect';
+import Stack from './Stack';
 
 const FormDialog = ({ isOpen, onClose }) => {
   const [formState, setFormState] = useState({
@@ -95,7 +96,6 @@ const FormDialog = ({ isOpen, onClose }) => {
           </div>,
           document.body,
         )}
-
         <div className="fixed inset-0 flex items-center justify-center p-0">
           <Transition.Child
             as={Fragment}
@@ -106,13 +106,12 @@ const FormDialog = ({ isOpen, onClose }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="w-full max-w-xl rounded bg-white">
+            <Dialog.Panel className="fixed w-full max-w-xl bg-white max-h-full overflow-y-auto">
               <form onSubmit={() => alert('SUBMIT')}>
                 <div className="flex flex-col px-4 py-3 sm:px-6 sm:py-8">
-                  <div className="flex flex-col gap-4">
+                  <Stack gap={4}>
                     <Dialog.Title as={Title}>RSVP</Dialog.Title>
                     <Dialog.Description>Paleio para introdução disto?</Dialog.Description>
-
                     <FormField
                       name="email"
                       id="email"
@@ -144,11 +143,10 @@ const FormDialog = ({ isOpen, onClose }) => {
                         type="text"
                         value={comments}
                         onChange={onCommentsChange}
-                        placeholder="Alertas, sugestões, votos, etc."
                         label="Comentários adicionais ou palavras especiais aos noivos?"
                       />
                     </div>
-                  </div>
+                  </Stack>
                 </div>
 
                 <div className="flex bg-gray-100 px-4 py-5 sm:px-6 sm:py-8 mt-8 justify-between">
