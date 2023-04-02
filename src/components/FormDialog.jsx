@@ -11,6 +11,7 @@ import AdultsSelect from './form/AdultsSelect';
 import ChildrenSelect from './form/ChildrenSelect';
 import Stack from './Stack';
 import rsvpSender from '../rsvpSender';
+import { postRsvp } from '../googleSheets';
 
 const FormDialog = ({ isOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
@@ -63,7 +64,10 @@ const FormDialog = ({ isOpen, onClose }) => {
   };
 
   const addChild = () => {
-    setFormState({ ...formState, children: [...children, { id: uuid(), name: '', age: '' }] });
+    setFormState({
+      ...formState,
+      children: [...children, { id: uuid(), name: '', age: '', allergies: [] }],
+    });
   };
 
   const removeChild = () => {
@@ -84,6 +88,16 @@ const FormDialog = ({ isOpen, onClose }) => {
   const submitForm = (event) => {
     event.preventDefault();
     setLoading(true);
+
+    postRsvp({
+      data: formState,
+      onSuccess: () => {
+        setLoading(false);
+      },
+      onError: () => {
+        setLoading(false);
+      },
+    });
 
     // rsvpSender({
     //   params: formState,

@@ -8,10 +8,10 @@ import Stack from '../Stack';
 const ChildrenSelect = ({ entries, add, remove, update }) => {
   return (
     <FieldList count={entries.length} add={add} remove={remove} title="Crianças">
-      {entries.map(({ id, name, age }, index) => (
-        <Fragment key={id}>
+      {entries.map(({ id, name, age, allergies }, index) => (
+        <div key={id}>
           <div className="flex items-end gap-3">
-            <div className="grow w-1/2">
+            <div className="w-1/3">
               <FormField
                 type="text"
                 id={`name-${id}`}
@@ -23,7 +23,7 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
               />
             </div>
 
-            <div className="w-1/2 flex-shrink-0">
+            <div className="w-20 flex-shrink-1">
               <div className="flex items-center gap-2">
                 <FormField
                   type="number"
@@ -34,18 +34,25 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                   placeholder="Idade"
                   onChange={(event) => update(id, { age: event.target.value })}
                 />
-                <span className="whitespace-nowrap">anos</span>
               </div>
+            </div>
+
+            <div className="w-1/3 grow flex-shrink-0">
+              <AlergiesSelect
+                allergies={allergies}
+                setAllergies={(allergies) => update(id, { allergies })}
+              />
             </div>
           </div>
 
-          <Stack direction="row" gap={5}>
+          <Stack direction="row" gap={5} className="mt-2">
             <Stack direction="row" itemsCenter>
               <input
                 type="radio"
                 id={`opt1-${id}`}
                 name={`cerimonia-festa-${id}`}
                 className="cursor-pointer"
+                onChange={() => update(id, { mode: 'ceremony-only' })}
               />
               <label htmlFor={`opt1-${id}`} className="cursor-pointer pl-2">
                 Apenas cerimónia
@@ -58,13 +65,14 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                 id={`opt2-${id}`}
                 name={`cerimonia-festa-${id}`}
                 className="cursor-pointer"
+                onChange={() => update(id, { mode: 'ceremony-and-party' })}
               />
               <label htmlFor={`opt2-${id}`} className="cursor-pointer pl-2">
                 Jantar e festa
               </label>
             </Stack>
           </Stack>
-        </Fragment>
+        </div>
       ))}
     </FieldList>
   );

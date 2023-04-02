@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <PageContainer>
-      <div className="flex flex-col mb-10 min-w-xl gap-5 md:gap-10">
+      <div className="flex flex-col mb-10 min-w-xl gap-5 md:gap-10 lg:basis-1/2">
         <Title bold>É desta.</Title>
 
         <div className="mt-5 md:mt-8">
@@ -47,7 +47,9 @@ const App = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-start basis-1/2 lg:px-5">
+        <img src="/rafanel.jpeg" className="w-100 mb-10" alt="Rafa e Nel" />
+
         <Title bold>RSVP</Title>
 
         <div className="mt-8">

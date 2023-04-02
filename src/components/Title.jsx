@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-const Title = ({ variant = 'h1', bold, children, ...props }) => {
+const Title = ({ variant = 'h1', centered = false, bold, children, ...props }) => {
   const classes = clsx(props.className, {
     'font-normal': !bold,
     'font-extrabold': bold,
@@ -19,6 +19,7 @@ const Title = ({ variant = 'h1', bold, children, ...props }) => {
     'md:text-2xl': variant === 'h4',
     'md:text-xl': variant === 'h5',
     'md:text-lg': variant === 'h6',
+    'text-center': centered,
   });
 
   const variants = {

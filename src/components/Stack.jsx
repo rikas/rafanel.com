@@ -1,6 +1,6 @@
 const Stack = ({
   children,
-  className,
+  className = '',
   itemsCenter = false,
   direction = 'column',
   as,

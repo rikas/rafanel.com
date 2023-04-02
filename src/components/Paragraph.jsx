@@ -1,15 +1,11 @@
 import clsx from 'clsx';
 
-const Paragraph = ({ children }) => {
-  const classes = clsx({
-    'text-slate-700': true,
-    'text-base': true,
-    'font-body': true,
-    'text-sm': true,
-    antialiased: true,
-  });
-
-  return <p className={classes}>{children}</p>;
+const Paragraph = ({ centered = false, children }) => {
+  return (
+    <p className={`text-slate-700 text-base font-body antialised ${centered ? 'text-center' : ''}`}>
+      {children}
+    </p>
+  );
 };
 
 export default Paragraph;
