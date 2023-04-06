@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-const Button = ({ type, children, variant = 'solid', disabled, ...props }) => {
+const Button = ({ fullWidth = false, type, children, variant = 'solid', disabled, ...props }) => {
   const classes = clsx(
     'text-white',
     'text-base',
@@ -25,9 +25,8 @@ const Button = ({ type, children, variant = 'solid', disabled, ...props }) => {
     'disabled:border-zinc-700',
     'disabled:hover:bg-zinc-700',
     {
+      'w-full': fullWidth,
       'bg-zinc-900': variant === 'solid',
-    },
-    {
       'bg-white text-zinc-900': variant === 'outline',
       'border-zinc-900': variant === 'outline',
     },

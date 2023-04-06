@@ -20,7 +20,7 @@ const App = () => {
         <div className="mt-5 md:mt-8">
           <Paragraph>Junto com os seus pais,</Paragraph>
           <Paragraph>Graça Correia e Valdemar Barreiros,</Paragraph>
-          <Paragraph>Isabel Rodrigues e José Álvaro Rodrigues Santos</Paragraph>
+          <Paragraph>Isabel Rodrigues e José Álvaro Santos</Paragraph>
           <Paragraph>e com o filho Francisco,</Paragraph>
         </div>
 
@@ -34,7 +34,8 @@ const App = () => {
           <Paragraph>no Convento de Sandelgas,</Paragraph>
           <Paragraph>Rua do Convento, nº 8,</Paragraph>
           <Paragraph>Sandelgas, 3025-474 Coimbra,</Paragraph>
-          <Paragraph>pelas 15h30, de 5ª feira, dia 5 de outubro de 2023.</Paragraph>
+          <Paragraph>pelas 15h30, de 5ª feira, dia</Paragraph>
+          <Paragraph>5 de outubro de 2023.</Paragraph>
         </div>
 
         <div className="mt-10 md:mt-8">
@@ -47,13 +48,13 @@ const App = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-start basis-1/2 lg:px-5">
+      <div className="flex flex-col justify-start sm:basis-1/2 lg:px-5">
         <img src="/rafanel.jpeg" className="w-100 mb-10" alt="Rafa e Nel" />
 
         <Title bold>RSVP</Title>
 
         <div className="mt-8">
-          <Button onClick={() => setModalOpen(true)}>
+          <Button fullWidth onClick={() => setModalOpen(true)}>
             <Title className="px-5 py-2">Quero ir</Title>
           </Button>
         </div>
