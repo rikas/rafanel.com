@@ -1,14 +1,18 @@
-import { Fragment } from 'react';
-
+import PropTypes from 'prop-types';
 import FormField from './FormField';
 import AlergiesSelect from './AlergiesSelect';
 import FieldList from './FieldList';
 import Stack from '../Stack';
 
+export const Modes = {
+  ALL: 'ceremony-and-party',
+  CEREMONY: 'ceremony-only',
+};
+
 const ChildrenSelect = ({ entries, add, remove, update }) => {
   return (
     <FieldList count={entries.length} add={add} remove={remove} title="Crianças">
-      {entries.map(({ id, name, age, allergies }, index) => (
+      {entries.map(({ id, name, age, mode, allergies }) => (
         <div key={id}>
           <div className="flex items-end gap-3">
             <div className="w-1/3">
@@ -20,6 +24,7 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                 label={false}
                 placeholder="Nome"
                 onChange={(event) => update(id, { name: event.target.value })}
+                required
               />
             </div>
 
@@ -33,6 +38,7 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                   label={false}
                   placeholder="Idade"
                   onChange={(event) => update(id, { age: event.target.value })}
+                  required
                 />
               </div>
             </div>
@@ -52,7 +58,8 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                 id={`opt1-${id}`}
                 name={`cerimonia-festa-${id}`}
                 className="cursor-pointer"
-                onChange={() => update(id, { mode: 'ceremony-only' })}
+                onChange={() => update(id, { mode: Modes.CEREMONY })}
+                checked={mode === Modes.CEREMONY}
               />
               <label htmlFor={`opt1-${id}`} className="cursor-pointer pl-2">
                 Apenas cerimónia
@@ -65,7 +72,8 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
                 id={`opt2-${id}`}
                 name={`cerimonia-festa-${id}`}
                 className="cursor-pointer"
-                onChange={() => update(id, { mode: 'ceremony-and-party' })}
+                onChange={() => update(id, { mode: Modes.ALL })}
+                checked={mode === Modes.ALL}
               />
               <label htmlFor={`opt2-${id}`} className="cursor-pointer pl-2">
                 Jantar e festa
@@ -76,6 +84,21 @@ const ChildrenSelect = ({ entries, add, remove, update }) => {
       ))}
     </FieldList>
   );
+};
+
+ChildrenSelect.propTypes = {
+  entries: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      age: PropTypes.number,
+      mode: PropTypes.oneOf(Object.values(Modes)).isRequired,
+      allergies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }),
+  ).isRequired,
+  add: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 export default ChildrenSelect;

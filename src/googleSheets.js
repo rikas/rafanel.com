@@ -1,6 +1,6 @@
 const API_URL = 'https://api.sheety.co/92bc1e237d28de7e9a6e05f7e2831915/rafanelCom/inscritos';
 
-export const postRsvp = async ({ data, onSuccess, onError }) => {
+const postRsvp = async ({ data, onSuccess, onError }) => {
   const { email, adults, children, comments } = data;
 
   const adultString = adults
@@ -21,9 +21,6 @@ export const postRsvp = async ({ data, onSuccess, onError }) => {
 
   const sheetData = { email: email.trim(), adults: adultString, children: childString, comments };
 
-  console.log(data);
-  console.log(sheetData);
-
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -31,10 +28,11 @@ export const postRsvp = async ({ data, onSuccess, onError }) => {
   });
 
   if (response.status === 200) {
-    const json = await response.json();
-    console.log(json);
+    // const json = await response.json();
     onSuccess(true);
   } else {
     onError();
   }
 };
+
+export default postRsvp;

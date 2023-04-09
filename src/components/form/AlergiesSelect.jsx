@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Listbox } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
-
-import FormSelect from './FormSelect';
 
 const possibleAllergies = [
   { id: 'vegetariano', name: 'Vegetariano' },
@@ -62,6 +60,16 @@ const AlergiesSelect = ({ allergies, setAllergies }) => {
       </div>
     </Listbox>
   );
+};
+
+AlergiesSelect.propTypes = {
+  allergies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  setAllergies: PropTypes.func.isRequired,
 };
 
 export default AlergiesSelect;

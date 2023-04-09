@@ -14,12 +14,10 @@ const rsvpSender = ({ params, onSuccess, onFailure }) => {
   };
 
   emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY).then(
-    function (response) {
-      console.log('SUCCESS!', response.status, response.text);
+    function () {
       onSuccess();
     },
-    function (error) {
-      console.log('FAILED...', error);
+    function () {
       onFailure();
     },
   );

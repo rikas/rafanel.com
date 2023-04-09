@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Dialog } from '@headlessui/react';
+import { useState } from 'react';
 
 import './app.css';
 

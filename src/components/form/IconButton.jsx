@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const IconButton = ({ children, ...props }) => (
   <button
     type="button"
@@ -7,5 +9,9 @@ const IconButton = ({ children, ...props }) => (
     {children}
   </button>
 );
+
+IconButton.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default IconButton;

@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-const Title = ({ variant = 'h1', centered = false, bold, children, ...props }) => {
-  const classes = clsx(props.className, {
+const Title = ({ variant = 'h1', centered = false, bold, className = '', children, ...props }) => {
+  const classes = clsx(className, {
     'font-normal': !bold,
     'font-extrabold': bold,
     'font-title': true,
@@ -38,6 +39,14 @@ const Title = ({ variant = 'h1', centered = false, bold, children, ...props }) =
       {children}
     </Component>
   );
+};
+
+Title.propTypes = {
+  variant: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  centered: PropTypes.bool,
+  bold: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
 
 export default Title;

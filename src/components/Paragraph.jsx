@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 const Paragraph = ({ centered = false, children }) => {
   return (
@@ -6,6 +6,11 @@ const Paragraph = ({ centered = false, children }) => {
       {children}
     </p>
   );
+};
+
+Paragraph.propTypes = {
+  centered: PropTypes.bool,
+  children: PropTypes.node.isRequired,
 };
 
 export default Paragraph;

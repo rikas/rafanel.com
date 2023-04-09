@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { PlusSmallIcon, MinusSmallIcon } from '@heroicons/react/24/solid';
 import IconButton from './IconButton';
 import Title from '../Title';
@@ -25,6 +26,15 @@ const FieldList = ({ title, count, add, remove, min = 0, children }) => {
       <Stack gap={5}>{children}</Stack>
     </>
   );
+};
+
+FieldList.propTypes = {
+  title: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  add: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  min: PropTypes.number,
+  children: PropTypes.node.isRequired,
 };
 
 export default FieldList;

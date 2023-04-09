@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 const Button = ({ fullWidth = false, type, children, variant = 'solid', disabled, ...props }) => {
   const classes = clsx(
@@ -37,6 +38,14 @@ const Button = ({ fullWidth = false, type, children, variant = 'solid', disabled
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  fullWidth: PropTypes.bool,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  children: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(['solid', 'outline']),
+  disabled: PropTypes.bool,
 };
 
 export default Button;

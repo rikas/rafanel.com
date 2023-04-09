@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Stack = ({
   children,
   className = '',
@@ -18,6 +20,15 @@ const Stack = ({
       {children}
     </Component>
   );
+};
+
+Stack.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  itemsCenter: PropTypes.bool,
+  direction: PropTypes.oneOf(['column', 'row']),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.node, PropTypes.func]),
+  gap: PropTypes.number,
 };
 
 export default Stack;
