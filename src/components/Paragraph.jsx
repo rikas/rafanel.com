@@ -16,20 +16,19 @@ const ParagraphSizes = {
   '9xl': 'text-9xl',
 };
 
-const Paragraph = ({ centered = false, size = 'base', children }) => {
-  return (
-    <p
-      className={`text-slate-700 ${ParagraphSizes[size]} font-body antialised ${
-        centered ? 'text-center' : ''
-      }`}
-    >
-      {children}
-    </p>
-  );
+const Paragraph = ({ centered = false, size = 'base', component = 'p', children }) => {
+  const Component = component;
+
+  const classes = `text-slate-700 ${ParagraphSizes[size]} antialised ${
+    centered ? 'text-center' : ''
+  } ${component === 'pre' ? 'font-mono' : 'font-body'}`;
+
+  return <Component className={classes}>{children}</Component>;
 };
 
 Paragraph.propTypes = {
   centered: PropTypes.bool,
+  component: PropTypes.string,
   size: PropTypes.oneOf(['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl']),
   children: PropTypes.node.isRequired,
 };

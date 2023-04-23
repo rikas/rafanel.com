@@ -66,8 +66,8 @@ const App = () => {
               contribuição para a nossa vida em conjunto, pelo IBAN:
             </Paragraph>
 
-            <Paragraph size="sm">
-              <pre>PT50 0023 0000 4564 9074 1659</pre>
+            <Paragraph size="sm" component="pre">
+              PT50 0023 0000 4564 9074 1659
             </Paragraph>
           </Stack>
         </div>

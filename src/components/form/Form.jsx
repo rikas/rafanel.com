@@ -27,9 +27,7 @@ function Form({ onClose, onSubmit }) {
     },
   });
 
-  const submitForm = (data) => {
-    console.log(data);
-    console.log('VAMOS SUBMETER!');
+  const submitForm = () => {
     setLoading(true);
     postRsvp({
       data: methods.watch(),
@@ -49,7 +47,7 @@ function Form({ onClose, onSubmit }) {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(submitForm, (errors) => console.log(errors))}>
+      <form onSubmit={methods.handleSubmit(submitForm)}>
         <div className="flex flex-col px-4 py-3 sm:px-6 sm:py-8">
           <Stack>
             <Dialog.Title as={Title}>RSVP</Dialog.Title>
