@@ -30,7 +30,7 @@ const Paragraph = ({ centered = false, size = 'base', children }) => {
 
 Paragraph.propTypes = {
   centered: PropTypes.bool,
-  size: PropTypes.oneOf[('xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl')],
+  size: PropTypes.oneOf(['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl']),
   children: PropTypes.node.isRequired,
 };
 
