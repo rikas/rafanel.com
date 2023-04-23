@@ -1,49 +1,44 @@
-import FormField from './FormField';
-import AlergiesSelect from './AlergiesSelect';
-import FieldList from './FieldList';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
-const AdultsSelect = ({ entries, add, remove, update }) => {
+import FormField from './FormField';
+import FieldList from './FieldList';
+import AllergiesSelect from './AllergiesSelect';
+
+const AdultsSelect = () => {
+  const { unregister } = useFormContext();
+  const [adults, setAdults] = useState(1);
+  const entries = Array.apply(null, { length: adults }).map(Number.call, Number);
+
+  const addAdult = () => setAdults((prev) => prev + 1);
+  const removeAdult = () => {
+    unregister(`adults.${adults - 1}.name`);
+    unregister(`adults.${adults - 1}.allergies`);
+    setAdults((prev) => prev - 1);
+  };
+
   return (
-    <FieldList count={entries.length} add={add} remove={remove} min={1} title="Adultos">
-      {entries.map(({ id, name, allergies }) => (
-        <div key={id} className="flex items-end gap-3">
+    <FieldList count={entries.length} add={addAdult} remove={removeAdult} min={1} title="Adultos">
+      {entries.map((index) => (
+        <div key={`adult-${index}`} className="flex items-start gap-3">
           <div className="grow w-1/2">
             <FormField
               type="text"
-              id={id}
-              name="name"
-              value={name}
+              id={`adults.${index}.name`}
+              name={`adults.${index}.name`}
               label={false}
               placeholder="Nome"
-              onChange={(event) => update(id, { name: event.target.value })}
               required
             />
           </div>
 
           <div className="w-1/2 flex-shrink-0">
-            <AlergiesSelect
-              allergies={allergies}
-              setAllergies={(allergies) => update(id, { allergies })}
-            />
+            <AllergiesSelect name={`adults.${index}.allergies`} />
           </div>
         </div>
       ))}
     </FieldList>
   );
-};
-
-AdultsSelect.propTypes = {
-  entries: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      allergies: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }),
-  ).isRequired,
-  add: PropTypes.func.isRequired,
-  remove: PropTypes.func.isRequired,
-  update: PropTypes.func.isRequired,
 };
 
 export default AdultsSelect;

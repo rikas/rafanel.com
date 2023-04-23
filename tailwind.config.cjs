@@ -12,5 +12,6 @@ module.exports = {
       },
     },
   },
+  safelist: [{ pattern: /gap-*/ }],
   plugins: [require('@tailwindcss/forms')],
 };

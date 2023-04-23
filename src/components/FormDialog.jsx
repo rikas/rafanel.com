@@ -6,6 +6,7 @@ import Thanks from './Thanks';
 
 const FormDialog = ({ isOpen, onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" onClose={onClose} className="relative z-50">
@@ -33,7 +34,7 @@ const FormDialog = ({ isOpen, onClose }) => {
           >
             <Dialog.Panel className="fixed w-full max-w-xl bg-white max-h-full overflow-y-auto">
               {isSubmitted ? (
-                <Thanks />
+                <Thanks onClose={onClose} />
               ) : (
                 <Form onClose={onClose} onSubmit={() => setIsSubmitted(true)} />
               )}
