@@ -67,7 +67,7 @@ const App = () => {
             </Paragraph>
 
             <Paragraph size="sm" component="pre">
-              PT50 0023 0000 4564 9074 1659
+              PT50 0023 0000 4564 9074 16594
             </Paragraph>
           </Stack>
         </div>
